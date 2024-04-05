@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Deploy an archive of static html"""
+"""Deploy an static archive html to my web servers with Fabric3"""
 
 from fabric import api
 from fabric.contrib import files
@@ -12,10 +12,10 @@ api.env.key_filename = '~/.ssh/alx_server'
 
 
 def do_deploy(archive_path):
-    """Function to transfer `archive_path` to web servers"""
+    """Function to transfer archive_path to web servers."""
     if not os.path.isfile(archive_path):
         return False
-    with api.cd('/tmp'i):
+    with api.cd('/tmp'):
         basename = os.path.basename(archive_path)
         root, ext = os.path.splitext(basename)
         outpath = '/data/web_static/releases/{}'.format(root)
